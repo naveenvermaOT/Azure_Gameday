@@ -1,227 +1,203 @@
-### Battle the Villains (Advanced)
+### Level 3: Battle the Villains (Advanced)
 
-**Objective:** Troubleshoot and optimize the Azure infrastructure and DevOps processes using Azure Copilot.
+**Objective:** Troubleshoot and optimize Azure infrastructure and DevOps processes using Azure Copilot.
 
----
+![alt text](images/avenegrs_vs_ultron.jpeg)
 
-#### Slide 1: Introduction to Battle the Villains
-
-**Content:**
-
-- **Level 3 Theme: Battle the Villains**
-  - "Welcome to Level 3, Avengers! It's time to face your greatest challenges yet. In this mission, you will defend against Loki's mischief, shield from Ultron, and optimize the Quinjet."
-
-- **Overview of Missions:**
-  - "You have three main missions: Defend Against Loki's Mischief, Shield from Ultron, and Optimize the Quinjet. Let’s dive into the details!"
-
-**Visuals:**
-- Illustration of Avengers facing off against Loki, Ultron, and optimizing the Quinjet.
-- Icons representing monitoring and alerts, security enhancements, and performance tuning.
+**Theme:** Taskmaster Loki will challenge you to defend against his mischief by ensuring your Azure resources are well-monitored, secure, and optimized for performance.
 
 ---
 
-#### Slide 2: Mission 1 – Defend Against Loki's Mischief
+### Mission 1: Defend Against Ultron's Mischief (Monitoring and Alerts)
 
-**Content:**
+**Task:** Setting Up Diagnostic Settings and Monitoring Alerts on VMs
 
-- **Mission Objective:**
-  - "Your first mission is to defend against Loki's mischief by setting up monitoring and alerts using Azure Monitor and Application Insights."
+**Guide:**
+- "To foresee Ultron's tricks, set up alerts quick. How will you keep an eye on your Iron Server?"
 
-- **Task Details:**
-  - "Use Azure Copilot to configure monitoring for your deployed application and set up alerts for any issues."
+**Steps:**
 
-**Visuals:**
-- Diagram showing the components of Azure Monitor and Application Insights.
-- Flowchart of the monitoring and alerting process.
+#### Setting Up Diagnostic Settings:
 
----
+1. **Navigate to the VM in Azure Portal:**
+   - Use Azure Copilot to open the Azure Portal and navigate to the Virtual Machine you want to monitor.
 
-#### Slide 3: Task Guide – Setting Up Monitoring and Alerts
+2. **Enable Diagnostic Settings:**
+   - Click on "Diagnostic settings" under the "Monitoring" section.
+   - Click "Add diagnostic setting."
+   - Name your diagnostic setting.
+   - Check the boxes for metrics and logs you want to monitor.
+   - Select the destination for the diagnostic logs (e.g., Log Analytics workspace, Storage account, Event Hub).
+   - Click "Save."
 
-**Content:**
+#### Creating Monitoring Alerts:
 
-- **Introduction to Monitoring and Alerts:**
-  - "Azure Monitor and Application Insights help you detect and diagnose issues in your applications and infrastructure."
+1. **Navigate to Alerts:**
+   - In the Azure Portal, navigate to the "Monitor" service.
+   - Click on "Alerts" in the sidebar.
 
-- **Using Azure Copilot:**
-  - "Azure Copilot can generate the code needed to set up monitoring and alerts."
+2. **Create New Alert Rule:**
+   - Click on "New alert rule."
+   - Select the VM as the resource to monitor.
+   - Click "Next: Condition."
+   - Choose a signal such as "Percentage CPU" for the condition.
+   - Configure the condition logic (e.g., CPU > 80%).
+   - Click "Next: Actions."
+   - Create or select an action group to notify stakeholders.
+   - Click "Next: Details."
+   - Name your alert rule and provide a description.
+   - Click "Create alert rule."
 
-**Guide (Riddle by Loki):**
-  - "To see through my mischief, say: 'Set the watchful eyes to monitor the skies, and alert the heroes when trouble lies.'"
+**Challenge:**
+- "Ultron's tricks are sly, set up alerts to defy. How will you know when the CPU is too high?"
 
-**Example Code Snippet:**
-```bash
-az monitor diagnostic-settings create --resource-group myResourceGroup --resource myWebApp --workspace myWorkspace --logs '[{"category": "AppServiceHTTPLogs", "enabled": true}]'
-az monitor metrics alert create --name "HighCPUAlert" --resource-group myResourceGroup --scopes /subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/myWebApp --condition "avg Percentage CPU > 80"
-```
-
-**Challenge (Riddle by Loki):**
-  - "Simulate an issue and show your might. How will you use the tools to set things right?"
-
----
-
-#### Slide 4: Task Guide – Simulating an Issue and Resolving It
-
-**Content:**
-
-- **Introduction to Troubleshooting:**
-  - "Simulating issues and resolving them helps ensure your application is resilient."
-
-- **Using Azure Copilot:**
-  - "Azure Copilot can guide you through simulating an issue and using monitoring tools to resolve it."
-
-**Guide (Riddle by Loki):**
-  - "To create a storm in your app, whisper: 'Invoke high load, let the server’s patience erode.' Then, use the watchful eyes to restore peace."
-
-**Example Code Snippet:**
-```bash
-# Simulate high CPU load
-while :; do :; done &
-# Use Application Insights to diagnose
-```
-
-**Challenge (Riddle by Loki):**
-  - "Identify the trouble using the eyes, and take the action that peace applies."
+![alt text](diagrams/azure_monitor.png)
 
 ---
 
-#### Slide 5: Mission 2 – Shield from Ultron
+### Mission 2: Simulate and Resolve Issues
 
-**Content:**
+**Task:** Simulating an Issue and Resolving It (Linux and Windows VMs)
 
-- **Mission Objective:**
-  - "Your second mission is to shield from Ultron by implementing security best practices using Azure Security Center and Copilot."
+**Guide:**
 
-- **Task Details:**
-  - "Use Azure Copilot to enable security policies and follow recommendations to enhance the security of your application."
+- "To battle my mischief and keep your systems fine, simulate issues and solve them in time."
 
-**Visuals:**
-- Diagram showing the components of Azure Security Center.
-- Flowchart of the security enhancement process.
+**Steps for Linux VM:**
 
----
+1. **Simulate CPU Spike:**
+   - SSH into the VM.
+   - Run a command to simulate a CPU spike:
+     ```bash
+     yes > /dev/null &
+     ```
 
-#### Slide 6: Task Guide – Implementing Security Enhancements
+2. **Resolve the Issue:**
+   - Identify the process causing the spike using `top` or `htop`.
+   - Kill the process:
+     ```bash
+     kill <process_id>
+     ```
 
-**Content:**
+**Steps for Windows VM:**
 
-- **Introduction to Security Enhancements:**
-  - "Azure Security Center provides unified security management and advanced threat protection across your workloads."
-  - "Using auto-provisioning settings to enable the automatic provisioning the security agents on the Azure VMs."
+1. **Simulate High CPU Usage:**
+   - RDP into the VM.
+   - Open PowerShell and run:
+     ```powershell
+     while ($true) { "" }
+     ```
 
-- **Using Azure Copilot:**
-  - "Azure Copilot can generate the code needed to implement security policies and recommendations."
+2. **Resolve the Issue:**
+   - Open Task Manager.
+   - End the high CPU usage process.
 
-**Guide (Riddle by Loki):**
-  - "To shield from Ultron’s grasp, declare: 'Secure my app with policies tight, protect it from the dark knight.'"
-
-**Example Code Snippet:**
-```bash
-az security auto-provisioning-setting list
-az security task list --resource-group myResourceGroup
-```
-
-**Challenge (Riddle by Loki):**
-  - "Identify the vulnerabilities and take action. What steps will you take for protection?"
-
----
-
-#### Slide 7: Task Guide – Mitigating Security Vulnerabilities
-
-**Content:**
-
-- **Introduction to Vulnerability Mitigation:**
-  - "Mitigating vulnerabilities ensures your application and infrastructure remain secure."
-
-- **Using Azure Copilot:**
-  - "Azure Copilot can guide you through identifying and mitigating security vulnerabilities."
-
-**Guide (Riddle by Loki):**
-  - "To find Ultron’s hidden paths, say: 'Scan for weaknesses, and patch the wrath.'"
-
-**Example Code Snippet:**
-```bash
-# Identify vulnerabilities
-az security task list --resource-group myResourceGroup
-
-# Apply patches and updates
-sudo apt-get update && sudo apt-get upgrade
-```
-
-**Challenge (Riddle by Loki):**
-  - "Resolve the weaknesses with swift might, and report your actions to the knight."
+**Challenge:**
+- "When CPU usage is high, find the culprit and let it die. What commands will you use to get by?"
 
 ---
 
-#### Slide 8: Mission 3 – Optimize the Quinjet
+### Mission 3: Shield from Ultron (Security Enhancements)
 
-**Content:**
+**Task:** Mitigating Security Vulnerabilities (Linux and Windows VMs)
 
-- **Mission Objective:**
-  - "Your third mission is to optimize the Quinjet by tuning the performance of your deployed application and infrastructure."
+**Guide:**
 
-- **Task Details:**
-  - "Use Azure Copilot to implement performance improvements, including scaling and cost management, and measure the impact."
+- "Ultron lurks in your VMs' seams. Strengthen your defenses to thwart his schemes."
 
-**Visuals:**
-- Diagram showing the components of performance tuning.
-- Flowchart of the optimization process.
+**Steps for Linux VM:**
 
----
+1. **Enable Firewall:**
+   - Use Azure Copilot to configure and enable `ufw`:
+     ```bash
+     sudo ufw enable
+     sudo ufw allow ssh
+     ```
 
-#### Slide 9: Task Guide – Performance Tuning and Scaling
+2. **Update System Packages:**
+   - Update the package list and upgrade packages:
+     ```bash
+     sudo apt update
+     sudo apt upgrade -y
+     ```
 
-**Content:**
+**Steps for Windows VM:**
 
-- **Introduction to Performance Tuning:**
-  - "Optimizing performance ensures your application runs efficiently and can handle increased load."
+1. **Enable Firewall:**
+   - Use Azure Copilot to configure Windows Firewall to allow necessary ports.
 
-- **Using Azure Copilot:**
-  - "Azure Copilot can generate the code needed for performance tuning and scaling."
+2. **Install Security Updates:**
+   - Check for and install Windows updates.
 
-**Guide (Riddle by Loki):**
-  - "To enhance the Quinjet’s flight, say: 'Scale the engines, and tune the might.'"
-
-**Example Code Snippet:**
-```bash
-# Scale the App Service Plan
-az appservice plan update --name myAppServicePlan --resource-group myResourceGroup --sku P1v2
-
-# Optimize application performance
-az webapp config set --resource-group myResourceGroup --name myWebApp --always-on true
-```
-
-**Challenge (Riddle by Loki):**
-  - "Measure the impact of your changes. How will you ensure optimal performance?"
+**Challenge:**
+- "Ultron’s threat is real, ensure your firewalls are a steel shield. How will you update to secure the field?"
 
 ---
 
-#### Slide 10: Task Guide – Measuring Performance Impact
+### Mission 4: Optimize the Quinjet (Performance Tuning and Scaling)
 
-**Content:**
+**Guide:**
+- "To outrun the enemies and stay ahead, tune and scale your VMs with nothing to dread."
 
-- **Introduction to Measuring Performance:**
-  - "Measuring the impact of your optimizations ensures you achieve the desired improvements."
+**Steps for Linux and Windows VMs:**
 
-- **Using Azure Copilot:**
-  - "Azure Copilot can guide you through monitoring and measuring performance metrics."
+#### Resizing the VM:
 
-**Guide (Riddle by Loki):**
-  - "To gauge the Quinjet’s flight, whisper: 'Monitor the metrics, and ensure the might.'"
+1. **Navigate to VM Settings:**
+   - Use Azure Copilot to open the Azure Portal and navigate to the VM you want to resize.
 
-**Example Code Snippet:**
-```bash
-# Monitor performance metrics
-az monitor metrics list --resource /subscriptions/{subscription-id}/resourceGroups/myResourceGroup/providers/Microsoft.Web/sites/myWebApp --metric-names "Percentage CPU"
-```
+2. **Resize VM:**
+   - Click on "Size" under the "Settings" section.
+   - Select a new VM size from the list based on your requirements.
+   - Click "Resize."
 
-**Challenge (Riddle by Loki):**
-  - "Report the performance gains achieved, and verify the optimal speed."
+#### Enabling Auto-scaling:
+
+1. **Create a Scale Set:**
+   - Navigate to "Virtual machine scale sets" in the Azure Portal.
+   - Click "Create" to create a new scale set.
+   - Follow the prompts to configure the scale set (resource group, region, etc.).
+
+2. **Configure Auto-scaling Rules:**
+   - After the scale set is created, click on "Scaling" under the "Settings" section.
+   - Click "Add a rule."
+   - Define the scale-out rule (e.g., add more instances when CPU > 75%).
+   - Define the scale-in rule (e.g., remove instances when CPU < 25%).
+   - Save the auto-scaling configuration.
+
+**Challenge:**
+- "To keep your VM performance pristine, what steps will you take to make it mean?"
 
 ---
 
-### Closing Remarks for Level 3:
+### Mission 5: Measuring Performance Impact
 
-- "Congratulations on completing Level 3! You have successfully defended against Loki's mischief, shielded from Ultron, and optimized the Quinjet using Azure Copilot. Your skills as Avengers and Azure experts have grown tremendously. Get ready for the final showdown in the next level!"
+**Guide:**
+- "After tuning and scaling your VMs with might, check the performance metrics to ensure they’re right."
 
-This revised content maintains the engaging Avengers theme, incorporating riddles from Loki to make the tasks more intriguing while providing practical hands-on experience with Azure services and Azure Copilot.
+**Steps:**
+
+#### Collecting Performance Metrics:
+
+1. **Open Azure Monitor:**
+   - Use Azure Copilot to navigate to the "Monitor" service in the Azure Portal.
+
+2. **View VM Metrics:**
+   - In Azure Monitor, click on "Metrics" in the sidebar.
+   - Select the VM as the resource to monitor.
+   - Choose metrics such as "Percentage CPU," "Disk I/O," "Network In/Out."
+   - Add these metrics to the chart.
+
+3. **Generate Performance Reports:**
+   - Use the "Add metric" button to include all relevant metrics.
+   - Customize the chart to view performance over specific time intervals.
+   - Save and export the performance reports.
+
+#### Analyzing Metrics:
+
+1. **Compare Performance:**
+   - Compare the performance metrics before and after tuning and scaling.
+   - Identify any remaining bottlenecks or areas needing improvement.
+
+**Challenge:**
+- "Measure your VMs' performance without slack. What commands will you use to keep them on track?"
